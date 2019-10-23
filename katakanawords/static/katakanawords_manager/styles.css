@@ -1,0 +1,47 @@
+body {
+	max-width:100%;
+}
+
+div#wrapper {
+	padding: 100px 0;
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	border: solid black 2px;
+	width: 600px;
+	height: 400px;
+	background-color: #d3d3d3 
+}
+
+text#progress {
+	font-size: 20px;
+}
+
+text#japanese_word {
+	font-size: 35px;
+	font-weight: bold;
+}
+
+text#result_text {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+form#game_body {
+	padding-top: 35px;
+}
+
+p#answer_button{
+    margin-top: 50px;
+}
+
+input[type=submit] {
+    width: 10em;  
+	height: 2em;
+}
+
+input[type=text] {
+    width: 35em;  
+	height: 2em;
+	padding-left: 5px
+}

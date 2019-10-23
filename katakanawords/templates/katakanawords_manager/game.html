@@ -1,0 +1,55 @@
+{%load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Katakana Words</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% load static %}
+<link rel="stylesheet", type="text/css", href="{% static "katakanawords_manager/styles.css" %}"/>
+</head>
+
+<body>
+<div align="center" id = "wrapper">
+
+{% if response != "Katakana Words" or currentQuestion != None %}
+<text id = "progress">Question {{currentQuestion}}/5</text><br>
+{% endif %}
+
+<text id = "japanese_word">{{response}}</text>
+
+{% if response == "Katakana Words" %}
+<form action = "/startnew/" method = "post" id = "new_game">
+<p id = "answer_button">{% csrf_token %}<input type = "submit" value = "PLAY"></p>
+</form>
+{% endif %}
+
+{% if response != "Katakana Words" and currentQuestion != None and result == None %}
+<form action = "/checkanswer/" method = "post" id = "game_body">
+{% csrf_token %}
+<input type = "text" name = "input" required> <br><p id = "answer_button"><input type = "submit" value = "GO"></p>
+</form>
+{% endif %}
+
+{% if result %}
+<br><text id = "result_text">{{result|linebreaks}}</text>
+
+{% endif %}
+
+{% if result and currentQuestion != 5 %}
+<form action = "/getnextquestion/" method = "post" id = "go_next">
+{% csrf_token %}
+<p><input type = "submit" value = "NEXT"></p>
+</form>
+{% endif %}
+
+{% if result and currentQuestion == 5 %}
+<form action = "/startnew/" method = "post" id = "new_game">
+<p id = "answer_button">{% csrf_token %}<input type = "submit" value = "PLAY AGAIN"></p>
+</form>
+{% endif %}
+
+
+
+</div>
+</body>
+</html>
