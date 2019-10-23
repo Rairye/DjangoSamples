@@ -47,7 +47,6 @@ def getnextquestion(request):
 		refreshable = False
 		currentQuestion +=1
 	response = {'response' : question, 'currentQuestion' : currentQuestion}
-	
 	return render(request, 'katakanawords_manager/game.html', response)
 
 @ensure_csrf_cookie
@@ -66,7 +65,6 @@ def checkanswer(request):
 		if currentQuestion >= 5:
 			finalScore = 0.0 if score == 0 else ((score/5) * 100)
 			result+="\n\nTotal score: " + str(finalScore) + "%"
-		
 		refreshable = True
 	response = {'response' : question, 'result' : result, 'currentQuestion' : currentQuestion}
 	return render(request, 'katakanawords_manager/game.html', response)
