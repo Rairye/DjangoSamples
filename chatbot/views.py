@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from . import ChatBot
-import time
-import threading
 
 chat_history = []
 
