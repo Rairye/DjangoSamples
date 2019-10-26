@@ -6,7 +6,6 @@ chat_history = []
 
 
 def home (request):
-	global postable
 	random_sent = ChatBot.get_random()
 	chat_history.append("<span style = \"font-style: italic\"> - Bot: " + random_sent + "</span>")
 	response = {"chat_history" : chat_history}
@@ -23,7 +22,6 @@ def postresponse(request):
 @ensure_csrf_cookie
 def getresponse(request):
 	postresponse(request)
-	global postable
 	postable = True
 	input = request.POST.get('input')
 	global chat_history
